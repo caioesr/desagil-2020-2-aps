@@ -27,4 +27,3 @@ public class AndGate extends Gate {
         nandLeft.connect(inputIndex, emitter);
     }
 }
-
