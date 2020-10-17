@@ -1,11 +1,6 @@
 package br.pro.hashi.ensino.desagil.aps;
 
-import br.pro.hashi.ensino.desagil.aps.model.AndGate;
-import br.pro.hashi.ensino.desagil.aps.model.NandGate;
-import br.pro.hashi.ensino.desagil.aps.model.NotGate;
-import br.pro.hashi.ensino.desagil.aps.model.OrGate;
-import br.pro.hashi.ensino.desagil.aps.model.XorGate;
-import br.pro.hashi.ensino.desagil.aps.model.Gate;
+import br.pro.hashi.ensino.desagil.aps.model.*;
 import br.pro.hashi.ensino.desagil.aps.view.View;
 
 import javax.swing.*;

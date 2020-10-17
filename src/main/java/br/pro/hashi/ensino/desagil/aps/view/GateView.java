@@ -7,15 +7,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GateView extends JPanel implements ActionListener{
+public class GateView extends JPanel implements ActionListener {
 
     private final Gate gate;
 
     private final JCheckBox[] entradas;
     private final JCheckBox saida;
 
-    public GateView(Gate gate)
-    {
+    public GateView(Gate gate) {
         this.gate = gate;
 
         JLabel entradaLabel = new JLabel("Entrada(s):");
@@ -27,8 +26,7 @@ public class GateView extends JPanel implements ActionListener{
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(entradaLabel);
-        for(int i = 0; i < entradas.length; i++)
-        {
+        for (int i = 0; i < entradas.length; i++) {
             entradas[i] = new JCheckBox();
             add(entradas[i]);
             entradas[i].addActionListener(this);
@@ -41,17 +39,12 @@ public class GateView extends JPanel implements ActionListener{
         update();
     }
 
-    private void update()
-    {
-        for(int i = 0; i < entradas.length; i++)
-        {
+    private void update() {
+        for (int i = 0; i < entradas.length; i++) {
             Switch aSwitch = new Switch();
-            if(entradas[i].isSelected())
-            {
+            if (entradas[i].isSelected()) {
                 aSwitch.turnOn();
-            }
-            else
-            {
+            } else {
                 aSwitch.turnOff();
             }
             gate.connect(i, aSwitch);
