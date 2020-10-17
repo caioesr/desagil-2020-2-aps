@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class View extends JPanel implements ActionListener{
 
-    private JComboBox<Gate> menu;
+    private final JComboBox<Gate> menu;
 
     private GateView gateView;
 

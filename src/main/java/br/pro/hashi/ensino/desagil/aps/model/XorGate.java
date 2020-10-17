@@ -29,7 +29,7 @@ public class XorGate extends Gate {
             nands[3].connect(inputIndex, nands[1]);
         }else{
             nands[0].connect(inputIndex, emitter);
-            nands[2].connect(1-inputIndex, nands[0]);
+            nands[2].connect(0, nands[0]);
             nands[2].connect(inputIndex, emitter);
             nands[3].connect(inputIndex, nands[2]);
         }

@@ -9,20 +9,17 @@ import java.awt.event.ActionListener;
 
 public class GateView extends JPanel implements ActionListener{
 
-    protected Gate gate;
+    private final Gate gate;
 
-    protected JLabel entradaLabel;
-    protected JLabel saidaLabel;
-
-    protected JCheckBox[] entradas;
-    protected JCheckBox saida;
+    private final JCheckBox[] entradas;
+    private final JCheckBox saida;
 
     public GateView(Gate gate)
     {
         this.gate = gate;
 
-        entradaLabel = new JLabel("Entrada(s):");
-        saidaLabel = new JLabel("Saida:");
+        JLabel entradaLabel = new JLabel("Entrada(s):");
+        JLabel saidaLabel = new JLabel("Saida:");
 
         entradas = new JCheckBox[gate.getInputSize()];
         saida = new JCheckBox();
