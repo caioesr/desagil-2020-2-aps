@@ -5,7 +5,7 @@ public class OrGate extends Gate {
 
     public OrGate()
     {
-        super("OrGate", 2);
+        super("OR", 2);
 
         nands = new NandGate[3];
         for(int i=0;i<nands.length;i++){
