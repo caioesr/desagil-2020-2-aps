@@ -71,8 +71,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             gate.connect(i, aSwitch);
         }
 
-        boolean resultado = gate.read();
-
         repaint();
     }
 
@@ -84,38 +82,27 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     @Override
     public void paintComponent(Graphics g) {
 
-        // Não podemos esquecer desta linha, pois não somos os
-        // únicos responsáveis por desenhar o painel, como era
-        // o caso nos Desafios. Agora é preciso desenhar também
-        // componentes internas, e isso é feito pela superclasse.
         super.paintComponent(g);
 
-        // Desenha a imagem, passando sua posição e seu tamanho.
         g.drawImage(gateImage, 20, 20, 320, 160, this);
 
-        // Desenha um quadrado cheio.
         g.setColor(saida.getColor());
         g.fillOval(330, 90, 20, 20);
 
-        // Linha necessária para evitar atrasos
-        // de renderização em sistemas Linux.
         getToolkit().sync();
     }
 
     @Override
     public void mouseClicked(MouseEvent event) {
 
-        // Descobre em qual posição o clique ocorreu.
         int x = event.getX();
         int y = event.getY();
 
-        // Se o clique foi dentro do quadrado colorido...
-        if (x >= 210 && x < 235 && y >= 311 && y < 336) {
+        if (Math.sqrt(Math.pow((x-330),2) + Math.pow((y-90),2)) > 10) {
 
-            // ...então abrimos a janela seletora de cor...
             color = JColorChooser.showDialog(this, null, color);
+            saida.setColor(color);
 
-            // ...e chamamos repaint para atualizar a tela.
             repaint();
         }
     }
