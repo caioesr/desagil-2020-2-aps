@@ -32,6 +32,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         entradas = new JCheckBox[gate.getInputSize()];
         saida = new JRadioButton();
+        saida.setLocation(320, 85);
+        saida.setSize(30,30);
 
         // setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -44,6 +46,16 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         add(saidaLabel);
         add(saida);
 
+        if(entradas.length > 1){
+            entradas[0].setLocation(20, 55);
+            entradas[0].setSize(25,25);
+            entradas[1].setLocation(20, 120);
+            entradas[1].setSize(25,25);
+        } else {
+            entradas[0].setLocation(20, 88);
+            entradas[0].setSize(25,25);
+        }
+
         saida.setEnabled(false);
 
         color = Color.BLACK;
@@ -51,7 +63,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         String imageName = gate.toString() + ".png";
         URL url = getClass().getClassLoader().getResource(imageName);
         gateImage = getToolkit().getImage(url);
-        System.out.println(imageName);
 
         addMouseListener(this);
 
@@ -91,11 +102,11 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         super.paintComponent(g);
 
         // Desenha a imagem, passando sua posição e seu tamanho.
-        g.drawImage(gateImage, 180 - 320 / 2, 100 - 160 / 2, 320, 160, this);
+        g.drawImage(gateImage, 20, 20, 320, 160, this);
 
         // Desenha um quadrado cheio.
-        g.setColor(color);
-        g.fillRect(0, 0, 1, 1);
+        // g.setColor(color);
+        // g.fillRect(20, 20, 25, 25);
 
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
