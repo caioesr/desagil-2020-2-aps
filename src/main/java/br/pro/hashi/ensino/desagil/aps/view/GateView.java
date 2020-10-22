@@ -1,6 +1,7 @@
 package br.pro.hashi.ensino.desagil.aps.view;
 
 import br.pro.hashi.ensino.desagil.aps.model.Gate;
+import br.pro.hashi.ensino.desagil.aps.model.Light;
 import br.pro.hashi.ensino.desagil.aps.model.Switch;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private final Gate gate;
 
     private final JCheckBox[] entradas;
-    private final JRadioButton saida;
+    private final Light saida;
 
     private final Image gateImage;
     private Color color;
@@ -27,24 +28,14 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         this.gate = gate;
 
-        JLabel entradaLabel = new JLabel("Entrada(s):");
-        JLabel saidaLabel = new JLabel("Saida:");
-
         entradas = new JCheckBox[gate.getInputSize()];
-        saida = new JRadioButton();
-        saida.setLocation(320, 85);
-        saida.setSize(30,30);
+        saida = new Light(255,0,0);
 
-        // setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        add(entradaLabel);
         for (int i = 0; i < entradas.length; i++) {
             entradas[i] = new JCheckBox();
             add(entradas[i]);
             entradas[i].addActionListener(this);
         }
-        add(saidaLabel);
-        add(saida);
 
         if(entradas.length > 1){
             entradas[0].setLocation(20, 55);
@@ -56,7 +47,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             entradas[0].setSize(25,25);
         }
 
-        saida.setEnabled(false);
+        saida.connect(0, gate);
 
         color = Color.BLACK;
 
@@ -82,8 +73,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
         boolean resultado = gate.read();
 
-        saida.setSelected(resultado);
-
         repaint();
     }
 
@@ -105,8 +94,8 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         g.drawImage(gateImage, 20, 20, 320, 160, this);
 
         // Desenha um quadrado cheio.
-        // g.setColor(color);
-        // g.fillRect(20, 20, 25, 25);
+        g.setColor(saida.getColor());
+        g.fillOval(330, 90, 20, 20);
 
         // Linha necessária para evitar atrasos
         // de renderização em sistemas Linux.
