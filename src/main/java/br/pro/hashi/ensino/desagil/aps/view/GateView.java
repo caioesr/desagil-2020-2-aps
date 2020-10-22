@@ -24,12 +24,12 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
 
     public GateView(Gate gate) {
 
-        super(360, 200);
+        super();
 
         this.gate = gate;
 
         entradas = new JCheckBox[gate.getInputSize()];
-        saida = new Light(255,0,0);
+        saida = new Light(255, 0, 0);
 
         for (int i = 0; i < entradas.length; i++) {
             entradas[i] = new JCheckBox();
@@ -37,14 +37,14 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
             entradas[i].addActionListener(this);
         }
 
-        if(entradas.length > 1){
+        if (entradas.length > 1) {
             entradas[0].setLocation(20, 55);
-            entradas[0].setSize(25,25);
+            entradas[0].setSize(25, 25);
             entradas[1].setLocation(20, 120);
-            entradas[1].setSize(25,25);
+            entradas[1].setSize(25, 25);
         } else {
             entradas[0].setLocation(20, 88);
-            entradas[0].setSize(25,25);
+            entradas[0].setSize(25, 25);
         }
 
         saida.connect(0, gate);
@@ -98,7 +98,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         int x = event.getX();
         int y = event.getY();
 
-        if (Math.sqrt(Math.pow((x-330),2) + Math.pow((y-90),2)) > 10) {
+        if (Math.sqrt(Math.pow((x - 330), 2) + Math.pow((y - 90), 2)) > 10) {
 
             color = JColorChooser.showDialog(this, null, color);
             saida.setColor(color);
